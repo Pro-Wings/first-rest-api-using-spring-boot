@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.prowings.model.Student;
 
+import io.swagger.annotations.Api;
+@Api(value = "sample get resource")
 @Controller
 public class HelloController {
 	

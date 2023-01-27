@@ -1,5 +1,7 @@
 package com.prowings.exception;
 
+import java.util.NoSuchElementException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,6 +19,17 @@ public class GlobalExceptionHandler {
 		er.setDetails(e.getLocalizedMessage());
 		er.setMessage(e.getMessage());
 		er.setPath("/request");
+		return er;
+	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(NoSuchElementException.class)
+	public ErrorResponse handleNoSuchElementException(NoSuchElementException e, WebRequest request)
+	{
+		ErrorResponse er = new ErrorResponse();
+		er.setDetails(e.getLocalizedMessage());
+		er.setMessage(e.getMessage());
+		er.setPath("/students/{id}");
 		return er;
 	}
 	
