@@ -22,6 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
 @SpringBootApplication
 public class FirstRestApiUsingSpringBootApplication {
@@ -53,4 +54,17 @@ public class FirstRestApiUsingSpringBootApplication {
 	private boolean shouldRegisterLinksMapping(WebEndpointProperties webEndpointProperties, Environment environment, String basePath) {
 	        return webEndpointProperties.getDiscovery().isEnabled() && (StringUtils.hasText(basePath) || ManagementPortType.get(environment).equals(ManagementPortType.DIFFERENT));
 	    }
+
+// Used this bean for SpringBoot's inbuilt logging - for logging incoming requests	
+//	@Bean
+//    public CommonsRequestLoggingFilter logFilter() {
+//        CommonsRequestLoggingFilter filter
+//          = new CommonsRequestLoggingFilter();
+//        filter.setIncludeQueryString(true);
+//        filter.setIncludePayload(true);
+//        filter.setMaxPayloadLength(10000);
+//        filter.setIncludeHeaders(false);
+//        filter.setAfterMessagePrefix("REQUEST DATA: ");
+//        return filter;
+//    }
 }

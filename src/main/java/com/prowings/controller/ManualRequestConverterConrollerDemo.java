@@ -32,6 +32,7 @@ public class ManualRequestConverterConrollerDemo {
 		try {
 			System.out.println(">>>>>>>>>Request Started at : " + start);
 			String incomingReq = entity.getBody();
+			System.out.println("==========>"+incomingReq);
 			myRequest = mapper.readValue(incomingReq, MyRequest.class);
 			System.out.println(myRequest);
 		} catch (Exception e) {
